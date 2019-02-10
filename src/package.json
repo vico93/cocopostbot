@@ -1,0 +1,16 @@
+{
+  "name": "merdapostbot",
+  "version": "0.0.1",
+  "description": "Tentativa de fazer um bot que faça a mesma coisa que o Shitpostbot5000",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vpontin/merdapostbot.git"
+  },
+  "author": "vico",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vpontin/merdapostbot/issues"
+  },
+  "homepage": "https://github.com/vpontin/merdapostbot#readme"
+}
