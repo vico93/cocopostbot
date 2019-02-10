@@ -1,12 +1,41 @@
-/* CONFIG */
-const config = require('./config.json');
+/* Includes */
+const config = require('./config.json'); // Arquivo de config
+const fs = require('fs');
+const path = require('path')
+
+/* Funções Úteis */
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomFile(dir, exts, cb){
+    fs.readdir(dir, (err, files) => {
+        if(err){
+            return cb(nil, err);
+        }
+        let f = files.filter((file) => {
+            let spt = file.split('.');
+            let ext = spt[spt.length-1];
+            if(exts.indexOf(ext) > -1)
+                return true
+            else
+                return false
+        });
+        let index = getRandomInt(0, f.length-1);
+        cb(f[index], null);
+    });
+}
 
 // Função que gera a imagem a partir de um template + source
 function gera_imagem() {
-	// console.log('Cant stop me now!');
 	
-	var imagem = require('./templates/drake_posting_meme_template_by_josael281999_dblbmu0.png');
-	var imagem_cfg = require('./templates/drake_posting_meme_template_by_josael281999_dblbmu0.json');
+	getRandomFile('./templates', ['png', 'jpg', 'jpeg'], (files, err) => {
+		var template_config = require('./' + path.basename(files, path.extname(files)) + '.json');
+		console.log('./templates/' + files);
+		console.log('./templates/' + template_config);
+	});
 
 }
 
