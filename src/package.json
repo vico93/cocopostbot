@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/vpontin/merdapostbot/issues"
   },
-  "homepage": "https://github.com/vpontin/merdapostbot#readme"
+  "homepage": "https://github.com/vpontin/merdapostbot#readme",
+  "dependencies": {
+    "merge-images": "^1.1.0"
+  }
 }
