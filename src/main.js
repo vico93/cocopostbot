@@ -1,7 +1,13 @@
+/* CONFIG */
+const config = require('./config.json');
 
 // Função que gera a imagem a partir de um template + source
 function gera_imagem() {
-  console.log('Cant stop me now!');
+	// console.log('Cant stop me now!');
+	
+	var imagem = require('./templates/drake_posting_meme_template_by_josael281999_dblbmu0.png');
+	var imagem_cfg = require('./templates/drake_posting_meme_template_by_josael281999_dblbmu0.json');
+
 }
 
 // Posta o conteúdo no Facebook
@@ -26,5 +32,5 @@ function principal()
 
 // Loop principal do script (minutos * 60000 = milisegundos)
 principal();
-setInterval(principal, 1000);
+setInterval(principal, config.tempo * 60000);
 

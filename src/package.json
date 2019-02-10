@@ -13,5 +13,7 @@
     "url": "https://github.com/vpontin/merdapostbot/issues"
   },
   "homepage": "https://github.com/vpontin/merdapostbot#readme",
-  "dependencies": {}
+  "dependencies": {
+    "gm": "^1.23.1"
+  }
 }
