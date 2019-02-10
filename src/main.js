@@ -3,15 +3,17 @@ const Canvas = require('canvas');
 var base64Img = require('base64-img');
 
 // Função que gera a imagem a partir de um template + source
-function gera_imagem(cb) {
-	let path = '/home/phantom/Code/merdapostbot/images/';
-	var optionalObj = {'fileName': 'merged.png', 'type':'png'};
-	mergeImages(['/home/phantom/Code/merdapostbot/images/body.png', 
-	'/home/phantom/Code/merdapostbot/images/eyes.png', 
-	'/home/phantom/Code/merdapostbot/images/mouth.png'], {
+function gera_imagem(images, dstpath, name, cb) {
+	mergeImages(images, {
 		Canvas: Canvas
 	}).then(b64 => {
-		
+		base64Img.img(b64, dstpath, name, (err, fpath) => {
+			if(err){
+				cb(nil);
+				return;
+			}
+			return(fpath);
+		});
 	});
 }
 
@@ -30,7 +32,13 @@ function posta_twitter()
 // Função principal: gera a imagem aleatória, posta no facebook e no Twitter e depois apaga ela para o próximo round.
 function principal()
 {
-	gera_imagem();
+	/*
+	 * Formato da função:
+	 * gera_image(<lista do caminho das imagens>, <caminho onde a imagem será salva>, <nome da imagem que será salva>, <callback>)
+	 */
+	gera_imagem([''], '', '', (fname) => {
+		console.log(fname)
+	});
 	posta_facebook();
 	posta_twitter();
 }
