@@ -1,9 +1,9 @@
 const mergeImages = require('merge-images');
-const Canvas = require('canvas')
-const base64ToImage = require('base64-to-image');
+const Canvas = require('canvas');
+var base64Img = require('base64-img');
 
 // Função que gera a imagem a partir de um template + source
-function gera_imagem() {
+function gera_imagem(cb) {
 	let path = '/home/phantom/Code/merdapostbot/images/';
 	var optionalObj = {'fileName': 'merged.png', 'type':'png'};
 	mergeImages(['/home/phantom/Code/merdapostbot/images/body.png', 
@@ -11,7 +11,7 @@ function gera_imagem() {
 	'/home/phantom/Code/merdapostbot/images/mouth.png'], {
 		Canvas: Canvas
 	}).then(b64 => {
-		base64ToImage(b64, path, optionalObj);
+		
 	});
 }
 
