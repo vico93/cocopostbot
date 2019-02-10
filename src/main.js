@@ -32,9 +32,9 @@ function getRandomFile(dir, exts, cb){
 function gera_imagem() {
 	
 	getRandomFile('./templates', ['png', 'jpg', 'jpeg'], (files, err) => {
-		var template_config = require('./' + path.basename(files, path.extname(files)) + '.json');
+		var template_config = require('./templates/' + path.basename(files, path.extname(files)) + '.json');
 		console.log('./templates/' + files);
-		console.log('./templates/' + template_config);
+		console.log('./templates/' + path.basename(files, path.extname(files)) + '.json');
 	});
 
 }
