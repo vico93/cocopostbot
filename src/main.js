@@ -31,6 +31,7 @@ function getRandomFile(dir, exts, cb){
 // Função que gera a imagem a partir de um template + source
 function gera_imagem() {
 	
+	// Pega um template aleatório e lê o json que acompanha
 	getRandomFile('./templates', ['png', 'jpg', 'jpeg'], (files, err) => {
 		var template_config = require('./templates/' + path.basename(files, path.extname(files)) + '.json');
 		console.log('./templates/' + files);
