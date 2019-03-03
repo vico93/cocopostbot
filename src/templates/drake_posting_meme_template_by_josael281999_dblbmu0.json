@@ -1,17 +1,18 @@
 {
   "filename": "./templates_img/drake_posting_meme_template_by_josael281999_dblbmu0.png",
-  "areas": {
-    "0": {
+  "areas":
+   [
+     {
       "x1": 665,
       "y1": 221,
       "x2": 240,
       "y2": 0
     },
-    "1": {
+    {
       "x1": 666,
       "y1": 432,
       "x2": 239,
       "y2": 226
     }
-  }
+  ]
 }

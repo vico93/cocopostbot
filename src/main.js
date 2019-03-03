@@ -26,13 +26,15 @@ function random_file(path)
 function generate_meme()
 {
 	// Objeto com propriedades do template
-	var template = require(random_file('./templates')); // Incorpora um JSON aleatório com descrição do template.
-	for (let i = 0; i < template.areas.length; i++){
-		console.log(i.x1);
-		console.log(i.y1);
-		console.log(i.x2);
-		console.log(i.y2);
-	};
+	let buffer = fs.readFileSync(random_file('./templates'), "utf8"); //(random_file('./templates')); // Incorpora um JSON aleatório com descrição do template.
+	let template = JSON.parse(buffer)
+	for(let i = 0; i < template["areas"].length; i++) {
+		console.log("x1:", template["areas"][i].x1)
+		console.log("y1:", template["areas"][i].y1)
+		console.log("x2:", template["areas"][i].x2)
+		console.log("y2:", template["areas"][i].y2)
+	}
+	
 }
 
 // Remove o arquivo temporário do meme
