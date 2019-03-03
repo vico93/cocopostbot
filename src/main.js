@@ -1,66 +1,45 @@
 /* Includes */
-const config = require('./config.json'); // Arquivo de config
+// Módulos
 const fs = require('fs');
-const path = require('path')
+
+// Outros
+const config = require('./config.json'); // Arquivo de config
 
 /* Funções Úteis */
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+// Gerar aleatório inteiro (com seed) de min para max - 1
+function get_random(min, max) {
+	return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-function getRandomFile(dir, exts, cb){
-    fs.readdir(dir, (err, files) => {
-        if(err){
-            return cb(nil, err);
-        }
-        let f = files.filter((file) => {
-            let spt = file.split('.');
-            let ext = spt[spt.length-1];
-            if(exts.indexOf(ext) > -1)
-                return true
-            else
-                return false
-        });
-        let index = getRandomInt(0, f.length-1);
-        cb(f[index], null);
-    });
+// Gera o arquivo do meme, a partir de um template e um source
+function generate_meme()
+{
+	var template = get_template();
+	var source = get_source();
 }
 
-// Função que gera a imagem a partir de um template + source
-function gera_imagem() {
-	
-	// Pega um template aleatório e lê o json que acompanha
-	getRandomFile('./templates', ['png', 'jpg', 'jpeg'], (files, err) => {
-		var template_config = require('./templates/' + path.basename(files, path.extname(files)) + '.json');
-		console.log('./templates/' + files);
-		console.log('./templates/' + path.basename(files, path.extname(files)) + '.json');
+// Remove o arquivo temporário do meme
+function delete_meme()
+{
+	fs.unlinkSync('./output.png', (err) => {
+		if (err) throw err;
+		console.log('[INFO] O meme criado foi apagado!');
 	});
-
 }
 
-// Posta o conteúdo no Facebook
-function posta_facebook()
+
+/* Função Principal */
+function main()
 {
-	console.log("FB: A ser implementado!");
+	generate_meme();
+	// post_media('facebook');
+	// post_media('twitter');
+	// post_media('discord');
+	// delete_meme();
 }
 
-// Posta o conteúdo no Twitter
-function posta_twitter()
-{
-	console.log("TT: A ser implementado!");
-}
-
-// Função principal: gera a imagem aleatória, posta no facebook e no Twitter e depois apaga ela para o próximo round.
-function principal()
-{
-	gera_imagem();
-	posta_facebook();
-	posta_twitter();
-}
-
+/* Processo Principal */
 // Loop principal do script (minutos * 60000 = milisegundos)
-principal();
-setInterval(principal, config.tempo * 60000);
-
+console.log('[INFO] Inicializando......');
+main();
+setInterval(main, config.time * 60000);
