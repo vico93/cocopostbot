@@ -27,7 +27,12 @@ function generate_meme()
 {
 	// Objeto com propriedades do template
 	var template = require(random_file('./templates')); // Incorpora um JSON aleatório com descrição do template.
-	console.log(template); // DEBUG!
+	for (let i = 0; i < template.areas.length; i++){
+		console.log(i.x1);
+		console.log(i.y1);
+		console.log(i.x2);
+		console.log(i.y2);
+	};
 }
 
 // Remove o arquivo temporário do meme
@@ -55,4 +60,4 @@ function main()
 console.log('[INFO] Inicializando......');
 main();
 // setInterval(main, config.time * 60000);
-setInterval(main, config.time); // DEBUG
+setInterval(main, 10000); // DEBUG
