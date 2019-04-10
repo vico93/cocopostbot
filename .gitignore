@@ -59,3 +59,8 @@ typings/
 
 # next.js build output
 .next
+
+# Pastas com memes (RECRIAR AUTOMATICAMENTE QUANDO RODAR O BOT!)
+memes\
+sources\
+templates\
