@@ -61,6 +61,6 @@ typings/
 .next
 
 # Pastas com memes (RECRIAR AUTOMATICAMENTE QUANDO RODAR O BOT!)
-memes\
-sources\
-templates\
+memes/
+sources/
+templates/
