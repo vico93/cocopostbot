@@ -1,6 +1,7 @@
 /* MÓDULOS */
 const fs = require('fs');
 const path = require('path');
+const canvas = require('canvas');
 
 /* VARIÁVEIS */
 
@@ -53,6 +54,9 @@ function get_source()
 // Cria o meme
 function make_meme()
 {
+	// ME BASEANDO EM https://gist.github.com/romuloctba/6fca13f9c4227ac08aa41b2622733f0b
+	// Variáveis
+	// Sorteia um template e a imagem correspondente
 	var template_json = get_template();
 	var template_image = template_json.replace("json", "png");
 	// get image
