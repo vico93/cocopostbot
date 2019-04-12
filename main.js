@@ -1,7 +1,7 @@
 /* MÓDULOS */
 const fs = require('fs');
 const path = require('path');
-const canvas = require('canvas');
+const Canvas = require('canvas');
 
 /* VARIÁVEIS */
 
@@ -16,20 +16,6 @@ const MEME_FOLDER = './memes'; // Output folder
 /* FUNÇÕES PRINCIPAIS */
 
 // Sorteia um template aleatório
-/* function get_template()
-{
-	// Lê a lista de arquivos dentro da pasta de sources
-	var file_list = fs.readdirSync(TEMPLATE_FOLDER);
-	// Exibe e retorna o nome de um arquivo aleatório da pasta
-	var file_choosed = file_list[Math.floor(Math.random() * file_list.length)];
-	while (path.extname(file_choosed).toLowerCase() !== '.json')
-	{
-		file_choosed = file_list[Math.floor(Math.random() * file_list.length)];
-	}
-	console.log('[INFO] Template sorteada: ' + file_choosed);
-	return file_choosed;
-} */
-
 function get_template()
 {
 	// Lê a lista de arquivos dentro da pasta de sources (já filtrando os arquivos .json
@@ -56,11 +42,15 @@ function make_meme()
 {
 	// ME BASEANDO EM https://gist.github.com/romuloctba/6fca13f9c4227ac08aa41b2622733f0b
 	// Variáveis
+	var Image = Canvas.Image; // Classe básica de imagem
+	var source = new Image();
+	var mask = new Image();
 	// Sorteia um template e a imagem correspondente
 	var template_json = get_template();
 	var template_image = template_json.replace("json", "png");
 	// get image
 	// insert json data into image
+
 }
 
 // Função principal
